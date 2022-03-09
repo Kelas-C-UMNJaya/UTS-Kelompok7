@@ -2,10 +2,10 @@
 ## {isi nama kelompok}
 
 ### Anggota
-- Asep
-- Agus
-- Bambang
-- Yusuf
+- Adhy
+- Andrew
+- Leo
+- Jonathan
 
 ### Aturan
 Lorem ipsum
