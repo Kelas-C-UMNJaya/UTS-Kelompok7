@@ -11,6 +11,10 @@ body {
    font-family: 'Roboto', sans-serif;
 }
 
+.text {
+  text-align: center;
+}
+
 #header img{
   width: 100px;
 }
@@ -29,4 +33,23 @@ body {
 
 .col{
   align-self: center;
+  width: 200px;
+}
+
+.btn-lg {
+  font-size: 100px;
+  cursor: pointer;
+  border: none;
+  background-color: white;
+  color: black;
+}
+
+.btn-lg:hover{
+  background-color: royalblue;
+  color: lightblue;
+}
+
+.slider-img {
+  width: 75%;
+  object-fit: cover;
 }
