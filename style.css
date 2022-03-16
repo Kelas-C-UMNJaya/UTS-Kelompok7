@@ -7,8 +7,10 @@
 }
 
 body {
+  background-image: url(images/bg.jpg);
+  background-size: cover;
   margin:0;
-   font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .text {
@@ -17,6 +19,7 @@ body {
 
 #header img{
   width: 100px;
+  align-items: center;
 }
 
 .row {
@@ -53,3 +56,8 @@ body {
   width: 75%;
   object-fit: cover;
 }
+
+/* .slider-img img{
+  width: 100px;
+  height: 250px;
+} */
