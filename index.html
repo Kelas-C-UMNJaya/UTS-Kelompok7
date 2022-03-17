@@ -24,15 +24,18 @@
             <button class="btn-lg" onclick="prev()">❮</button>
           </div>
           <div class="col-2">
-            <img src="images/char1.png" alt="" class="slider-img" />
+            <img id="image_shower" src="images/char1.png" alt="" class="slider-img" />
           </div>
           <div class="col">
             <button class="btn-lg" onclick="next()">❯</button>
           </div>
         </div>
+        <div>
+          <button onclick = "showImage()" class="d-flex mt-3 mb-3 gap-4 align-items-center flex-md-row flex-column">Random Avatar</button>
+        </div>
         <div id="playerInput" class="col-5 mt-3">
           
-          <input type="text" class="w-50 form-control" id="nama" name="nama" value="" placeholder="Enter your name here...">
+          <input type="text" id="nama" name="nama" value="" placeholder="Enter your name here...">
           <input type="button" id="PLAY" onclick="gameStart()" value="PLAY" class="d-flex mt-3 mb-3 gap-4 align-items-center flex-md-row flex-column" >
         
         </div>
@@ -44,16 +47,14 @@
               <img src="images/food.png" class="">
               <div class="progress">
                   <div id="hunger" class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
-                        <!-- <span class="sr-only">70%</span> -->
+                       
                   </div>
               </div>
             </div>
             <div class="col-sm-6 mb-3">
               <img src="images/main.png" class="">
               <div class="progress">
-                  <div id="happiness" class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
-                    <!-- <span class="sr-only">70%</span> -->
-                  </div>
+                  <div id="happiness" class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%"></div>
               </div>
             </div>
           </div>
@@ -61,23 +62,19 @@
             <div class="col-sm-6 mb-3">
               <img src="images/tidur.png" class="">
               <div class="progress">
-                <div id="health" class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
-                  <!-- <span class="sr-only">70%</span> -->
-                </div>
+                <div id="health" class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%"></div>
               </div>
             </div>
             <div class="col-sm-6 mb-3">
               <img src="images/belajar.png" class="">
               <div class="progress">
-                <div id="knowledge" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-                  <!-- <span class="sr-only">70%</span> -->
-                </div>
+                <div id="knowledge" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%"></div>
               </div>
             </div>
           </div>  
         </div>
     
-        <div id="username"><button onclick="showName()">name</button><h2 id="usrNm"></h2></div>
+        <div id="username"></div>
         
         <div id="clock">
           <span id="hours">00</span>
@@ -85,7 +82,7 @@
           <span id="minutes">00</span>
           <span id="session">AM</span>
         </div>
-      
+        <div id="avatarPlay"></div>
         <div id="options" class="d-flex mt-3 gap-4 align-items-center flex-md-row flex-column">
           <div>
             <div class="col-sm-6 mb-3">
