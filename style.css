@@ -57,6 +57,11 @@ body {
   object-fit: cover;
 }
 
+.clock{
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-weight: bold;
+}
 /* .slider-img img{
   width: 100px;
   height: 250px;
