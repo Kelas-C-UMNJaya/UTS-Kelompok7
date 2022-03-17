@@ -24,20 +24,27 @@
             <button class="btn-lg" onclick="prev()">❮</button>
           </div>
           <div class="col-2">
-            <img id="image_shower" src="images/char1.png" alt="" class="slider-img" />
+            <img src="images/char1.png" alt="" class="slider-img" />
           </div>
           <div class="col">
             <button class="btn-lg" onclick="next()">❯</button>
           </div>
         </div>
-        <div>
-          <button onclick = "showImage()" class="d-flex mt-3 mb-3 gap-4 align-items-center flex-md-row flex-column">Random Avatar</button>
+        <div id="random" class="row mt-2">
+          <div class="col">
+          <button onclick="showImage()" class="d-flex mt-3 mb-3 gap-4 align-items-center flex-md-row flex-column">Random Avatar</button>
+          </div>
+          <div class="col">
+          <button id="generate" class="d-flex mt-3 mb-3 gap-4 align-items-center flex-md-row flex-column">Random Name</button>
+          </div>
         </div>
         <div id="playerInput" class="col-5 mt-3">
-          
-          <input type="text" id="nama" name="nama" value="" placeholder="Enter your name here...">
-          <input type="button" id="PLAY" onclick="gameStart()" value="PLAY" class="d-flex mt-3 mb-3 gap-4 align-items-center flex-md-row flex-column" >
-        
+          <div id="random_name">
+            <input type="text" id="nama" name="nama" value="" placeholder="Enter your name here...">
+          </div>
+          <div>
+            <input type="button" id="PLAY" onclick="gameStart()" value="PLAY" class="d-flex mt-3 mb-3 gap-4 align-items-center flex-md-row flex-column" >
+          </div>
         </div>
       </div>
       <div id="game" class="d-none">

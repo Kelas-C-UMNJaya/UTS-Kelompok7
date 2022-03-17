@@ -25,15 +25,68 @@ function next(){
 function setImg() {
     return slider_img.setAttribute('src', 'images/' + images[i]);
 }
-  
-const pics = ['url(char1.png)', 'char2.png'];
 
-const pic = document.querySelector('section');
+const pics = [
+    'images("char1.jpg")',
+    'images("char2.jpg")',
+] 
+
+const pic = document.querySelector('.slider-img');
 
 function showImage(){
-    var a = math.floor(Math.random()*pics.length);
-    var img = pics[a]
+    var a = Math.floor(Math.random()*pics.length);
+    console.log(a);
+    var img = pics[a];
+    console.log(img);
+    pic.style.backgroundImage = img
+} 
+
+/*
+var adjective = ["Excited", "Anxious", "Overweight", "Demonic", "Jumpy", "Misunderstood", "Squashed", "Gargantuan","Broad", "Crooked", "Curved", "Deep", "Even","Excited", "Anxious", "Overweight", "Demonic", "Jumpy", "Misunderstood", "Squashed", "Gargantuan","Broad", "Crooked", "Curved", "Deep", "Even", "Flat", "Hilly", "Jagged", "Round", "Shallow", "Square", "Steep", "Straight", "Thick", "Thin", "Cooing", "Deafening", "Faint", "Harsh", "High-pitched", "Hissing", "Hushed", "Husky", "Loud", "Melodic", "Moaning", "Mute", "Noisy", "Purring", "Quiet", "Raspy", "Screeching", "Shrill", "Silent", "Soft", "Squeaky", "Squealing", "Thundering", "Voiceless", "Whispering"] 
+var object = ["Taco", "Operating System", "Sphere", "Watermelon", "Cheeseburger", "Apple Pie", "Spider", "Dragon", "Remote Control", "Soda", "Barbie Doll", "Watch", "Purple Pen", "Dollar Bill", "Stuffed Animal", "Hair Clip", "Sunglasses", "T-shirt", "Purse", "Towel", "Hat", "Camera", "Hand Sanitizer Bottle", "Photo", "Dog Bone", "Hair Brush", "Birthday Card"]
+var list;
+
+function generator() {
+    document.getElementById("nama").innerHTML = adjective[Math.floor(Math.random() * adjective.length)] + " " + object[Math.floor(Math.random() * object.length)];
 }
+*/
+
+/*
+function capFirst(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+function generateName(){
+    var first_name = ["abandoned","able","absolute","adorable"];
+
+    var last_name = ["people","history","way","art","world"];
+
+    var name = capFirst(first_name[getRandomInt(0, first_name.length + 1)]) + ' ' + capFirst(last_name[getRandomInt(0, last_name.length + 1)]);
+        document.getElementById("namaText").innerHTML = name;
+}
+*/
+
+const firstNames = ["Hope", "Launa", "Katherine", "Walker", "Moses", "Tayna", "Rosia", "Yahaira", "Tommy", "Elwanda", "Clorinda", "Sheron", "Kayla", "Clementina", "Rene", "Rex", "Kathy", "Latoya", "Shirleen", "Shoshana"];
+
+const secondNames = ["Chauncey", "Houchins", "Lama", "Frasca", "Houston", "Ake", "Shankles", "Cantor", "Mizell", "Cleland", "Maltby", "Tirrell", "Cary", "Mace", "Horta", "Carlile", "Deegan", "Torrez", "Humfeld", "Helgeson"];
+
+const getRandomNumber = (max) => Math.floor(Math.random() * max);
+
+const getRandomName = () => 
+  `${firstNames[getRandomNumber(firstNames.length)]} ${secondNames[getRandomNumber(secondNames.length)]}`;
+
+const setRandomName = () => {
+  document.getElementById('nama').innerText = getRandomName();
+}
+
+document.getElementById('generate')
+  .addEventListener('click', setRandomName);
+
+setRandomName();
 
 function gameStart(){
     let playerName = document.getElementById("nama").value;
