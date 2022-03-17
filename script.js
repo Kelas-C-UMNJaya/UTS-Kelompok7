@@ -1,4 +1,7 @@
 
+
+let hour = Math.floor(Math.random() * 24);
+let minutes = 0;
 let j = 0;
 let hunger = 50
 let health = 50
@@ -89,11 +92,13 @@ document.getElementById('generate')
 setRandomName();
 
 function gameStart(){
+    
     let playerName = document.getElementById("nama").value;
     
     document.getElementById("avatar").classList.add("d-none");
     document.getElementById("game").classList.remove("d-none");
     document.getElementById("username").innerHTML = playerName;
+
     progressBar("hunger", hunger);
     progressBar("health", health);
     progressBar("happiness", happiness);
@@ -234,3 +239,6 @@ function displayTime(){
     document.getElementById('minutes').innerHTML = min;
 }
 setInterval(displayTime, 10);*/
+
+// var hours = dateTime.getHours();
+// var minutes = dateTime.getMinutes();

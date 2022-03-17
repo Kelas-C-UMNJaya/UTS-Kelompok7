@@ -7,19 +7,24 @@
 }
 
 body {
-  background-image: url(images/bg.jpg);
+  background: url(images/day.png);
   background-size: cover;
+  background-repeat: no-repeat;
   margin:0;
   font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
 }
 
-.text {
+#header{
+  width: 550px;
+  align-items: center;
   text-align: center;
+  padding-top: 10px;
+  margin: 0 auto;
 }
 
 #header img{
   width: 100px;
-  align-items: center;
 }
 
 .row {
