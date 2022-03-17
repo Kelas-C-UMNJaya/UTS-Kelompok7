@@ -1,9 +1,11 @@
 
-
+let j = 0;
 let hunger = 50
 let health = 50
 let happiness = 50
 let knowledge = 0
+let jam = 8;
+let menit = 0;
 var slider_img = document.querySelector('.slider-img');
 var images = ['char1.png', 'char2.png'];
 var i = 0;
@@ -24,16 +26,14 @@ function setImg() {
     return slider_img.setAttribute('src', 'images/' + images[i]);
 }
   
-  function randomAvatar(){
-    random_index = Math.floor(Math.random() * images.length);
+const pics = ['url(char1.png)', 'char2.png'];
 
-    selected_image = images[random_index]
-  
-    document.getElementById('image_shower').src = `./images/${selected_image}`
-  }
+const pic = document.querySelector('section');
 
-
-
+function showImage(){
+    var a = math.floor(Math.random()*pics.length);
+    var img = pics[a]
+}
 
 function gameStart(){
     let playerName = document.getElementById("nama").value;
@@ -45,11 +45,52 @@ function gameStart(){
     progressBar("health", health);
     progressBar("happiness", happiness);
     progressBar("knowledge", knowledge);
-
+    timerun();
 
 }
+/* WIP buat jam yang jalan otomatis. Note :setInterval itu mirip loop jadi functionnya jalan tiap lewat beberapa saat, clearInterval untuk akhirin looping.
+Ubah i jadi j karena udah dipake variabelnya
 
+let timeRun = setInterval(() => {
+    if (win == true) {
+    clearInterval(timeRun);
+    }
+    i++;
 
+    if (win == true || go == true) {
+    clearInterval(timeRun);
+    }
+
+    if (i > 59) {
+    hour++;
+
+    if (!(win == true || go == true)) {
+        if (hour == 5) {
+        clickSound("berkokok");
+        }
+    }
+
+    if (hour > 23) {
+        hour = 0;
+    }
+
+    cekTime(hour);
+    setBackground(hour);
+
+    i = 0;
+    }
+
+    minutes = i;
+
+    if (minutes < 10) {
+    minutes = "0" + i;
+    }
+
+    watchHour.innerHTML = hour;
+    watchMinutes.innerHTML = minutes;
+}, 1000);
+*/
+  
 
 
 function progressBar  (id, value)  {
@@ -64,9 +105,19 @@ function progressBar  (id, value)  {
 function makanIncrease(){
     hunger += 20;
     main -= 10;
+    clearInterval(timeRun);
+    j += 15;
+    if (j > 59) {
+        hour++;
+        if (hour > 23) {
+            hour = 0;
+        }
+        j = 0
+    }
     if(hunger > 100){
         hunger = 100;
     }
+    startTime();
     progressBar("hunger", hunger);
 }
 /*
