@@ -1,7 +1,7 @@
 
 
-let hour = Math.floor(Math.random() * 24);
-let minutes = 0;
+//let hour = Math.floor(Math.random() * 24);
+//let minutes = 0;
 let j = 0;
 let hunger = 50
 let health = 50
@@ -9,9 +9,12 @@ let happiness = 50
 let knowledge = 0
 let jam = 8;
 let menit = 0;
+const minutes = document.querySelector(".minutes");
+const hour = document.querySelector(".hours");
 var slider_img = document.querySelector('.slider-img');
 var images = ['char1.png', 'char2.png'];
 var i = 0;
+let win = false;
 
 function prev(){
     if (i <= 0 ) i = images.length;
@@ -90,9 +93,45 @@ document.getElementById('generate')
   .addEventListener('click', setRandomName);
 
 setRandomName();
+const clock = setInterval(() => {
+    // if (win == true) {
+    // clearInterval(clock);
+    // }
+    j++;
+
+    // if (win == true || go == true) {
+    // clearInterval(clock);
+    // }
+
+    if (j > 59) {
+        jam++;
+        if (jam > 23) {
+            jam = 0;
+        }
+
+        //cekTime(hour);
+        //setBackground(hour);
+
+        j = 0;
+    }
+
+    menit = j;
+
+    if (menit < 10) {
+    menit = "0" + j;
+}
+
+hour.innerHTML = jam;
+minutes.innerHTML = menit;
+}, 1000);
+
 
 function gameStart(){
-    
+    if (menit < 10) {
+        menit = "0" + j;
+    }
+    hour.innerHTML = jam;
+    minutes.innerHTML = menit;
     let playerName = document.getElementById("nama").value;
     
     document.getElementById("avatar").classList.add("d-none");
@@ -103,51 +142,13 @@ function gameStart(){
     progressBar("health", health);
     progressBar("happiness", happiness);
     progressBar("knowledge", knowledge);
-    timerun();
+    clock;
 
 }
-/* WIP buat jam yang jalan otomatis. Note :setInterval itu mirip loop jadi functionnya jalan tiap lewat beberapa saat, clearInterval untuk akhirin looping.
-Ubah i jadi j karena udah dipake variabelnya
+// WIP buat jam yang jalan otomatis. Note :setInterval itu mirip loop jadi functionnya jalan tiap lewat beberapa saat, clearInterval untuk akhirin looping.
+//Ubah i jadi j karena udah dipake variabelnya
 
-let timeRun = setInterval(() => {
-    if (win == true) {
-    clearInterval(timeRun);
-    }
-    i++;
 
-    if (win == true || go == true) {
-    clearInterval(timeRun);
-    }
-
-    if (i > 59) {
-    hour++;
-
-    if (!(win == true || go == true)) {
-        if (hour == 5) {
-        clickSound("berkokok");
-        }
-    }
-
-    if (hour > 23) {
-        hour = 0;
-    }
-
-    cekTime(hour);
-    setBackground(hour);
-
-    i = 0;
-    }
-
-    minutes = i;
-
-    if (minutes < 10) {
-    minutes = "0" + i;
-    }
-
-    watchHour.innerHTML = hour;
-    watchMinutes.innerHTML = minutes;
-}, 1000);
-*/
   
 
 
@@ -162,21 +163,27 @@ function progressBar  (id, value)  {
   };
 function makanIncrease(){
     hunger += 20;
-    main -= 10;
-    clearInterval(timeRun);
+    happiness -= 10;
+    
     j += 15;
     if (j > 59) {
-        hour++;
-        if (hour > 23) {
-            hour = 0;
+        jam++;
+        if (jam > 23) {
+            jam = 0;
         }
-        j = 0
+        j -= 60;
     }
+    menit = j;
+    if (menit < 10) {
+        menit = "0" + j;
+    }
+    hour.innerHTML = jam;
+    minutes.innerHTML = menit;
     if(hunger > 100){
         hunger = 100;
     }
-    startTime();
     progressBar("hunger", hunger);
+    progressBar("happiness", happiness);
 }
 /*
 function tidurIncrease(){
