@@ -13,9 +13,11 @@ const minutes = document.querySelector(".minutes");
 const hour = document.querySelector(".hours");
 var slider_img = document.querySelector('.slider-img');
 var images = ['char1.png', 'char2.png'];
+var voice = ['char1.wav', 'char2.wav'];
 var i = 0;
 let win = false;
-
+var avatar = document.querySelector('.avatarPlay-img');
+var voiceline = document.getElementById("voiceline");
 function prev(){
     if (i <= 0 ) i = images.length;
     i--;
@@ -29,7 +31,7 @@ function next(){
 }
 
 function setImg() {
-    return slider_img.setAttribute('src', 'images/' + images[i]);
+    return slider_img.setAttribute('src', 'assets/avatar/' + images[i]);
 }
 
 const pics = [
@@ -123,7 +125,7 @@ const clock = setInterval(() => {
 
 hour.innerHTML = jam;
 minutes.innerHTML = menit;
-}, 1000);
+}, 3000);
 
 
 function gameStart(){
@@ -137,7 +139,7 @@ function gameStart(){
     document.getElementById("avatar").classList.add("d-none");
     document.getElementById("game").classList.remove("d-none");
     document.getElementById("username").innerHTML = playerName;
-
+    avatar.setAttribute('src', 'assets/avatar/' + images[i]);
     progressBar("hunger", hunger);
     progressBar("health", health);
     progressBar("happiness", happiness);
@@ -150,7 +152,9 @@ function gameStart(){
 
 
   
-
+function resetAvatar(){
+    avatar.setAttribute('src', 'assets/avatar/' + images[i]);
+}
 
 function progressBar  (id, value)  {
     const progressBar = document.getElementById(id);
@@ -184,6 +188,10 @@ function makanIncrease(){
     }
     progressBar("hunger", hunger);
     progressBar("happiness", happiness);
+    avatar.setAttribute('src', 'assets/avatar/makan/' + images[i]);
+    voiceline.setAttribute('src', 'assets/avatar/makanAudio/' + voice[i]);
+    voiceline.play();
+    setTimeout(resetAvatar, 15000)
 }
 /*
 function tidurIncrease(){

@@ -11,7 +11,7 @@
   <body>
     <div id="bungkus" class="container-fluid">
       <div id="header" class="mt-3 gap-4 align-items-center">
-        <img src="images/trophy.png" alt="" />
+        <img src="assets/trophy.png" alt="" />
         <h3>Mid Exam</h3>
         <hr>
       </div>
@@ -22,7 +22,7 @@
               <button class="btn-lg" onclick="prev()">❮</button>
             </div>
             <div class="col-2">
-              <img src="images/char1.png" alt="" class="slider-img" />
+              <img src="assets/avatar/char1.png" alt="" class="slider-img" />
             </div>
             <div class="col">
               <button class="btn-lg" onclick="next()">❯</button>
@@ -52,7 +52,7 @@
               <div class="d-flex">
                 <div class="d-flex">
                   <div class="col-2">
-                    <img src="images/food.png" class="">
+                    <img src="assets/food.png" class="">
                   </div>
                   <div class="col-6">
                     <div class="progress">
@@ -63,7 +63,7 @@
                 </div>
                 <div class="d-flex">
                   <div class="col-2">
-                    <img src="images/main.png" class="">
+                    <img src="assets/main.png" class="">
                   </div>
                   <div class="col-sm-6 mb-3">
                     <div class="progress">
@@ -75,7 +75,7 @@
               <div>
                 <div class="d-flex">
                   <div>
-                    <img src="images/tidur.png" class="">
+                    <img src="assets/tidur.png" class="">
                   </div>
                   <div class="col-sm-6 mb-3">
                     <div class="progress">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="d-flex">
                   <div>
-                    <img src="images/belajar.png" class="">
+                    <img src="assets/belajar.png" class="">
                   </div>
                   <div class="col-sm-6 mb-3">
                     <div class="progress">
@@ -105,22 +105,22 @@
             <span>:</span>
             <span class="minutes">00</span>
           </div>
-          <div id="avatarPlay"></div>
+          <div id="avatarPlay"><img alt="" class="avatarPlay-img" /><audio id="voiceline" src=""></audio></div>
           <div id="options" class="d-flex mt-3 gap-4 align-items-center flex-md-row flex-column">
-            <div>
-              <div class="col-sm-6 mb-3">
-                <button onclick="makanIncrease()">Makan</button>
+            <div class="action">
+              <div class="col-6 d-grid mx-auto mb-3">
+                <button class="btn color" onclick="makanIncrease()">Makan</button>
               </div>
-              <div class="col-sm-6 mb-3">
-                <button onclick="mainIncrease()">Main</button>
+              <div class="col-6 d-grid mx-auto mb-3">
+                <button class="btn color" onclick="mainIncrease()">Main</button>
               </div>
             </div>
-            <div>
-              <div class="col-sm-6 mb-3">
-                <button onclick="tidurIncrease()">Tidur</button>
+            <div class="action">
+              <div class="col-6 d-grid mx-auto mb-3">
+                <button class="btn color" onclick="tidurIncrease()">Tidur</button>
               </div>
-              <div class="col-sm-6 mb-3">
-                <button onclick="belajarIncrease()">Belajar</button>
+              <div class="col-6 d-grid mx-auto mb-3">
+                <button class="btn color" onclick="belajarIncrease()">Belajar</button>
               </div>
             </div>
           </div>

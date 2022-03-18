@@ -7,7 +7,7 @@
 }
 
 body {
-  background: url(images/day.png);
+  background: url(assets/day.png);
   background-size: cover;
   background-repeat: no-repeat;
   margin:0;
@@ -71,3 +71,21 @@ body {
   width: 100px;
   height: 250px;
 } */
+
+.action .btn{
+  border: 2px solid black;
+  width: 100px;
+  background-color: brown;
+  cursor: pointer;
+  /* background-color: yellow; */
+}
+
+.action .color{
+  border-color: yellow;
+  color: yellow;
+}
+
+.action .color:hover{
+  background: yellow;
+  color: white;
+}
