@@ -12,9 +12,18 @@ let menit = 0;
 const minutes = document.querySelector(".minutes");
 const hour = document.querySelector(".hours");
 var slider_img = document.querySelector('.slider-img');
-var images = ['char1.png', 'char2.png'];
-var voice = ['char1.wav', 'char2.wav'];
+var images = ['char1.png', 'char2.png', 'char3.png','char4.png'];
+var voice = ['char1.wav', 'char2.wav', 'char3.wav', 'char4.wav'];
+var warningHunger = 0;
+var warningHappiness = 0;
+var warningHealth = 0;
+var warningKnowledge = 0;
+var semester = 1;
 var i = 0;
+var k = 0;
+var l = 0;
+var limit = 20;
+
 let win = false;
 var avatar = document.querySelector('.avatarPlay-img');
 var voiceline = document.getElementById("voiceline");
@@ -34,108 +43,127 @@ function setImg() {
     return slider_img.setAttribute('src', 'assets/avatar/' + images[i]);
 }
 
-const pics = [
-    'images("char1.jpg")',
-    'images("char2.jpg")',
-] 
+document.querySelector("#avatar-btn").addEventListener("click", get_random_image);
 
-const pic = document.querySelector('.slider-img');
+function get_random_image(){
+    i = Math.floor(Math.random() * images.length);
+  
+    selected_image = images[i]
+  
+    document.getElementById('image_shower').src = `./assets/avatar/${selected_image}`
+  }
 
-function showImage(){
-    var a = Math.floor(Math.random()*pics.length);
-    console.log(a);
-    var img = pics[a];
-    console.log(img);
-    pic.style.backgroundImage = img
-} 
 
-/*
-var adjective = ["Excited", "Anxious", "Overweight", "Demonic", "Jumpy", "Misunderstood", "Squashed", "Gargantuan","Broad", "Crooked", "Curved", "Deep", "Even","Excited", "Anxious", "Overweight", "Demonic", "Jumpy", "Misunderstood", "Squashed", "Gargantuan","Broad", "Crooked", "Curved", "Deep", "Even", "Flat", "Hilly", "Jagged", "Round", "Shallow", "Square", "Steep", "Straight", "Thick", "Thin", "Cooing", "Deafening", "Faint", "Harsh", "High-pitched", "Hissing", "Hushed", "Husky", "Loud", "Melodic", "Moaning", "Mute", "Noisy", "Purring", "Quiet", "Raspy", "Screeching", "Shrill", "Silent", "Soft", "Squeaky", "Squealing", "Thundering", "Voiceless", "Whispering"] 
-var object = ["Taco", "Operating System", "Sphere", "Watermelon", "Cheeseburger", "Apple Pie", "Spider", "Dragon", "Remote Control", "Soda", "Barbie Doll", "Watch", "Purple Pen", "Dollar Bill", "Stuffed Animal", "Hair Clip", "Sunglasses", "T-shirt", "Purse", "Towel", "Hat", "Camera", "Hand Sanitizer Bottle", "Photo", "Dog Bone", "Hair Brush", "Birthday Card"]
+var adjective = ["Hope","Obie", "Launa", "Katherine", "Walker", "Moses", "Tayna", "Rosia", "Yahaira", "Tommy", "Elwanda", "Clorinda", "Sheron", "Kayla", "Clementina", "Rene", "Rex", "Kathy", "Latoya", "Shirleen", "Shoshana"]; 
+var object = ["Chauncey", "Houchins", "Lama", "Frasca", "Houston", "Ake", "Shankles", "Cantor", "Mizell", "Cleland", "Maltby", "Tirrell", "Cary", "Mace", "Horta", "Carlile", "Deegan", "Torrez", "Humfeld", "Helgeson"];
 var list;
 
+document.querySelector("#gen-button").addEventListener("click", generator);
+
 function generator() {
-    document.getElementById("nama").innerHTML = adjective[Math.floor(Math.random() * adjective.length)] + " " + object[Math.floor(Math.random() * object.length)];
-}
-*/
-
-/*
-function capFirst(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-    }
-
-function generateName(){
-    var first_name = ["abandoned","able","absolute","adorable"];
-
-    var last_name = ["people","history","way","art","world"];
-
-    var name = capFirst(first_name[getRandomInt(0, first_name.length + 1)]) + ' ' + capFirst(last_name[getRandomInt(0, last_name.length + 1)]);
-        document.getElementById("namaText").innerHTML = name;
-}
-*/
-
-const firstNames = ["Hope", "Launa", "Katherine", "Walker", "Moses", "Tayna", "Rosia", "Yahaira", "Tommy", "Elwanda", "Clorinda", "Sheron", "Kayla", "Clementina", "Rene", "Rex", "Kathy", "Latoya", "Shirleen", "Shoshana"];
-
-const secondNames = ["Chauncey", "Houchins", "Lama", "Frasca", "Houston", "Ake", "Shankles", "Cantor", "Mizell", "Cleland", "Maltby", "Tirrell", "Cary", "Mace", "Horta", "Carlile", "Deegan", "Torrez", "Humfeld", "Helgeson"];
-
-const getRandomNumber = (max) => Math.floor(Math.random() * max);
-
-const getRandomName = () => 
-  `${firstNames[getRandomNumber(firstNames.length)]} ${secondNames[getRandomNumber(secondNames.length)]}`;
-
-const setRandomName = () => {
-  document.getElementById('nama').innerText = getRandomName();
+    document.querySelector("#nama").value = adjective[Math.floor(Math.random() * adjective.length)] + " " + object[Math.floor(Math.random() * object.length)];
 }
 
-document.getElementById('generate')
-  .addEventListener('click', setRandomName);
-
-setRandomName();
-const clock = setInterval(() => {
-    // if (win == true) {
-    // clearInterval(clock);
-    // }
-    j++;
-
-    // if (win == true || go == true) {
-    // clearInterval(clock);
-    // }
-
-    if (j > 59) {
-        jam++;
-        if (jam > 23) {
-            jam = 0;
+function waktuBerjalan(){
+    const clock = setInterval(() => {
+        if (semester > 8) {
+            clearInterval(clock);
+        }
+        j++;
+        k++;
+        l++;
+        
+        if (j > 59) {
+            jam++;
+            if (jam > 23) {
+                jam = 0;
+            }
+            cekJam(jam);
+            j = 0;
+        }
+        if(hunger < 20 && l > 10){
+            alert("Status : Lapar, segera makan");
+            l = 0;
+            warningHunger++;
+        }
+        if(happiness < 20 && l > 10){
+            alert("Status : Stress, segera lepaskan stress");
+            l = 0;
+            warningHappiness++;
+        }
+        if(health < 20 && l > 10){
+            alert("Status : Capek, segera tidur");
+            l = 0;
+            warningHealth++;
+        }
+        if(knowledge < limit && k > 500 && l > 10){
+            alert("Status : akan dropout, segera belajar");
+            l = 0;
+            k = 0;
+            limit += 20;
+            warningKnowledge++;
+        } 
+        if (warningHunger > 2){
+            clearInterval(clock);
+            document.getElementById("game").classList.add("d-none");
+            alert("Game over. Reason : mati kelaparan.");
+        }
+        if (warningHappiness > 2){
+            clearInterval(clock);
+            document.getElementById("game").classList.add("d-none");
+            alert("Game over. Reason : Stress sehingga dropout.");
+        }
+        if (warningHealth > 2){
+            clearInterval(clock);
+            document.getElementById("game").classList.add("d-none");
+            alert("Game over. Reason : mati kecapekan.");
+        }
+        if (warningKnowledge > 2){
+            clearInterval(clock);
+            document.getElementById("game").classList.add("d-none");
+            alert("Game over. Reason : Dropout.");
+        }
+    
+        hunger--;
+        happiness--;
+        health--;
+        menit = j;
+        if(hunger < 0){
+            hunger = 0;
+        }
+        if(happiness < 0){
+            happiness = 0;
+        }
+        if(health < 0){
+            health = 0;
         }
 
-        //cekTime(hour);
-        //setBackground(hour);
-
-        j = 0;
-    }
-
-    menit = j;
-
-    if (menit < 10) {
-    menit = "0" + j;
+        progressBar("hunger", hunger);
+        progressBar("health", health);
+        progressBar("happiness", happiness);
+        progressBar("knowledge", knowledge);
+        if (menit < 10) {
+        menit = "0" + j;
+        }
+    
+    
+    hour.innerHTML = jam;
+    minutes.innerHTML = menit;
+    }, 3000);
 }
 
-hour.innerHTML = jam;
-minutes.innerHTML = menit;
-}, 3000);
 
 
 function gameStart(){
+    
     if (menit < 10) {
         menit = "0" + j;
     }
     hour.innerHTML = jam;
     minutes.innerHTML = menit;
+    cekJam(jam);
+    document.getElementById("semester").innerHTML = semester;
     let playerName = document.getElementById("nama").value;
-    
     document.getElementById("avatar").classList.add("d-none");
     document.getElementById("game").classList.remove("d-none");
     document.getElementById("username").innerHTML = playerName;
@@ -144,12 +172,32 @@ function gameStart(){
     progressBar("health", health);
     progressBar("happiness", happiness);
     progressBar("knowledge", knowledge);
-    clock;
-
+    waktuBerjalan();
+    
 }
-// WIP buat jam yang jalan otomatis. Note :setInterval itu mirip loop jadi functionnya jalan tiap lewat beberapa saat, clearInterval untuk akhirin looping.
-//Ubah i jadi j karena udah dipake variabelnya
 
+function cekJam(jam) {
+    var greeting = document.getElementById("greeting");
+    var greet;
+    var bg = document.body;
+    if (jam > 2 && jam <= 10) {
+        greet = "Good Morning ";
+        bg.setAttribute('style', 'background: url(assets/morning.png)');
+    } else if (jam > 10 && jam <= 16) {
+        greet = "Good Afternoon ";
+        bg.setAttribute('style', 'background: url(assets/day.png)');
+    } else if (jam > 16 && jam <= 23) {
+        greet = "Good Night ";
+        bg.setAttribute('style', 'background: url(assets/night.png)');
+    } else if (jam == 0) {
+        bg.setAttribute('style', 'background: url(assets/night.png)');
+        greet = "Good Night ";
+    } else if (jam > 0 && jam <= 2) {
+        bg.setAttribute('style', 'background: url(assets/night.png)');
+        greet = "Good Night ";
+    }
+    greeting.innerHTML = greet;
+}
 
   
 function resetAvatar(){
@@ -158,17 +206,18 @@ function resetAvatar(){
 
 function progressBar  (id, value)  {
     const progressBar = document.getElementById(id);
-    //let cls = "progress-bar";
-    //cls += " " + id;
-  
     progressBar.setAttribute("style", "width: " + value + "%");
-    //progressBar.setAttribute("class", cls);
     progressBar.innerHTML = value;
   };
 function makanIncrease(){
-    hunger += 20;
-    happiness -= 10;
     
+    if (happiness < 20) {
+        hunger += 5;
+        happiness -= 5;
+    } else {
+        hunger += 15;
+        happiness -= 5;
+    }
     j += 15;
     if (j > 59) {
         jam++;
@@ -186,74 +235,123 @@ function makanIncrease(){
     if(hunger > 100){
         hunger = 100;
     }
+    if(happiness < 0){
+        happiness = 0;
+    }
+    cekJam(jam);
     progressBar("hunger", hunger);
     progressBar("happiness", happiness);
     avatar.setAttribute('src', 'assets/avatar/makan/' + images[i]);
     voiceline.setAttribute('src', 'assets/avatar/makanAudio/' + voice[i]);
     voiceline.play();
-    setTimeout(resetAvatar, 15000)
+    setTimeout(resetAvatar, 5000)
 }
-/*
 function tidurIncrease(){
-    health.style.width = (parseInt(health.style.width) + 20) + "%";
-    hunger.style.width = (parseInt(hunger.style.width) - 10) + "%";
-    hunger.ariaValueNow = (parseInt(hunger.ariaValueNow) - 10);
-    health.ariaValueNow = (parseInt(health.ariaValueNow) + 20);
-}
-
-function mainIncrease(){
-    if (health.ariaValueNow < 20 ) {
-        happiness.style.width = (parseInt(happiness.style.width) + 5) + "%";
-        happiness.ariaValueNow = (parseInt(happiness.ariaValueNow) + 5);
-    } else if (happiness.ariaValueNow < 100 && happiness.ariaValueNow > 20){
-        happiness.style.width = (parseInt(happiness.style.width) + 20) + "%";
-        health.style.width = (parseInt(health.style.width) - 10) + "%";
-        health.ariaValueNow = (parseInt(health.ariaValueNow) - 10);
-        happiness.ariaValueNow = (parseInt(happiness.ariaValueNow) + 20);
-    }
-
     
-    if(health.ariaValueNow >= 99 ) {
-        happiness.style.width = 99 + "%";
-        happiness.ariaValueNow= 99;
-    }
-    
-}
-
-function belajarIncrease(){
-    if (hunger.ariaValueNow < 20 ) {
-        knowledge.style.width = (parseInt(knowledge.style.width) + 20) + "%";
-        happiness.style.width = (parseInt(happiness.style.width) - 10) + "%";
-        health.style.width = (parseInt(health.style.width) - 10) + "%";
-        happiness.ariaValueNow = (parseInt(happiness.ariaValueNow) - 10);
-        health.ariaValueNow = (parseInt(health.ariaValueNow) - 10);
-        knowledge.ariaValueNow = (parseInt(knowledge.ariaValueNow) + 20);
-        
+    if (hunger < 20) {
+        health += 5;
+        hunger -= 5;
     } else {
-        knowledge.style.width = (parseInt(knowledge.style.width) + 20) + "%";
-        hunger.style.width = (parseInt(hunger.style.width) - 10) + "%";
-        hunger.ariaValueNow = (parseInt(hunger.ariaValueNow) - 10);
-        knowledge.ariaValueNow = (parseInt(knowledge.ariaValueNow) + 20);
+        health += 15;
+        hunger -= 5;
+    }
+
+    jam+= 6;
+    if (jam > 23) {
+        jam -= 24;
     }
     
+    hour.innerHTML = jam;
+    if(health > 100){
+        health = 100;
+    }
+    if(hunger < 0){
+        hunger = 0;
+    }
+    cekJam(jam);
+    progressBar("hunger", hunger);
+    progressBar("health", health);
+    avatar.setAttribute('src', 'assets/avatar/tidur/' + images[i]);
+    voiceline.setAttribute('src', 'assets/avatar/tidurAudio/' + voice[i]);
+    voiceline.play();
+    setTimeout(resetAvatar, 5000)
 }
-
-function displayTime(){
-    var dateTime = new Date();
-    var hrs = dateTime.getHours();
-    var min = dateTime.getMinutes();
-    var session = document.getElementById('session');
-
-    if(hrs >= 12){
-        session.innerHTML = 'PM';
-    }else{
-        session.innerHTML = 'AM';
+function mainIncrease(){
+    
+    if (health < 20) {
+        health -= 5;
+        happiness += 5;
+    } else {
+        health -= 5;
+        happiness += 15;
+    }
+    
+    jam++;
+    if (jam > 23) {
+        jam -= 24;
+    }
+    hour.innerHTML = jam;
+    if(happiness > 100){
+        happiness = 100;
+    }
+    if(health < 0){
+        health = 0;
+    }
+    cekJam(jam);
+    progressBar("health", health);
+    progressBar("happiness", happiness);
+    avatar.setAttribute('src', 'assets/avatar/main/' + images[i]);
+    voiceline.setAttribute('src', 'assets/avatar/mainAudio/' + voice[i]);
+    voiceline.play();
+    setTimeout(resetAvatar, 5000)
+}
+function belajarIncrease(){
+    
+    if (happiness < 20 || health < 20 || hunger < 20) {
+        happiness -= 5;
+        health -= 5;
+        hunger -= 5;
+    } else {
+        knowledge += 10;
+        happiness -= 5;
+        health -= 5;
+        hunger -= 5;
+    }
+    jam+= 3;
+    if (jam > 23) {
+        jam -= 24;
     }
 
-    document.getElementById('hours').innerHTML = hrs;
-    document.getElementById('minutes').innerHTML = min;
-}
-setInterval(displayTime, 10);*/
+    hour.innerHTML = jam;
+    if(knowledge > 100){
+        semester++;
+        knowledge = 0;
+        limit = 20; 
+        k = 0;
 
-// var hours = dateTime.getHours();
-// var minutes = dateTime.getMinutes();
+    }
+
+    if(hunger < 0){
+        hunger = 0;
+    }
+    if(health < 0){
+        health = 0;
+    }
+    if(happiness < 0){
+        happiness = 0;
+    }
+    cekJam(jam);
+    progressBar("hunger", hunger);
+    progressBar("happiness", happiness);
+    progressBar("health", health);
+    progressBar("knowledge", knowledge);
+    avatar.setAttribute('src', 'assets/avatar/belajar/' + images[i]);
+    voiceline.setAttribute('src', 'assets/avatar/belajarAudio/' + voice[i]);
+    voiceline.play();
+    setTimeout(resetAvatar, 5000);
+    document.getElementById("semester").innerHTML = semester;
+    if (semester > 8) {
+        document.getElementById("game").classList.add("d-none");
+        document.getElementById("Victory").classList.remove("d-none");
+    }
+}

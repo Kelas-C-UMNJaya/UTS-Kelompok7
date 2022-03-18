@@ -7,9 +7,11 @@
 }
 
 body {
-  background: url(assets/day.png);
+  background: url('assets/bg.png');
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   margin:0;
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
@@ -31,6 +33,14 @@ body {
   display: flex;
 }
 
+.playButton img{
+  width: 150px;
+}
+
+#Status-bar{
+  background-color: #858585;
+}
+
 #Status-bar img{
   width: 25px;
 }
@@ -47,14 +57,14 @@ body {
 .btn-lg {
   font-size: 100px;
   cursor: pointer;
-  border: none;
-  background-color: white;
+  border-color: black;
+  background-color: #858585;
   color: black;
 }
 
 .btn-lg:hover{
-  background-color: royalblue;
-  color: lightblue;
+  background-color: black;
+  color: white;
 }
 
 .slider-img {
@@ -72,20 +82,49 @@ body {
   height: 250px;
 } */
 
+.play{
+  max-width: 40%;
+  cursor: pointer;
+  padding: auto;
+  margin-top: 10px;
+}
+
+.randomName{
+  max-width: 20%;
+  cursor: pointer;
+  padding: auto;
+  margin-top: 10px;
+}
+
+.randomAvatar{
+  max-width: 20%;
+  cursor: pointer;
+  padding: auto;
+  margin-top: 10px;
+}
+
 .action .btn{
   border: 2px solid black;
   width: 100px;
-  background-color: brown;
+  background-color: #854f2b;
   cursor: pointer;
-  /* background-color: yellow; */
 }
 
 .action .color{
-  border-color: yellow;
-  color: yellow;
+  border-color: #477a1e;
+  color: white;
 }
 
 .action .color:hover{
-  background: yellow;
+  background: #477a1e;
   color: white;
+} 
+
+#options {
+  margin: auto;
+  width: 37%;
+}
+
+.action{
+  transform: translateX(-25px);
 }
