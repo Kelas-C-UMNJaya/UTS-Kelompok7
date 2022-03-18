@@ -1,4 +1,4 @@
-# {isi nama game}
+# UMN Life
 ## Kelompok 7
 
 ### Anggota
